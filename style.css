@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {                                                      /* Cor de fundo */
+    height: 100vh;                                          /* Altura total da tela */
+    display: flex;
+    background: linear-gradient(to left top, #20b69a, rgb(200, 255, 239));
+}
+
+.main-game {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    background-color: whitesmoke; /* Green */
+    border: 10px;
+    border-radius: 5px;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input:hover {
+    opacity: 0.5;
+}
+
+.memory-game {                                              /* Cor de fundo do jogo */
+    height: 640px;                                          /* Altura do jogo */
+    width: 640px;                                           /* Largura do jogo */
+    margin: auto;                                           /* Centraliza o jogo */
+    display: flex;                                          /* Alinha os elementos do jogo */
+    flex-wrap: wrap;                                        /* Permite que os elementos sejam organizados em linhas e colunas */
+    perspective: 1000px;                                    /* Define a distância entre o plano de visualização e o plano de projeção */
+                                                            /* perspectiva do usuario no eixo z, quanto maior, maior o efeito da perspectiva */
+}
+
+#inicio {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    box-shadow: black 5px 5px 10px;
+    border: 5px white solid;
+	width:450px;
+	height:350px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+	/* background-color:whitesmoke; */
+	padding: 30px;
+    border-radius: 5px;
+    background: rgb(92, 187, 182);                        /* cor de fundo do card */
+}
+
+h1 {
+    padding: 15px;
+}
+
+.texto {
+    font-size: 18px;
+    color: white;
+    text-align: justify;
+    padding: 15px;
+}
+
+.card {
+    height: calc(33.333% - 10px);                           /* 33.333% da altura da div pai - 10px de espaçamento */
+    width: calc(25% - 10px);                                /* 25% da largura da div pai */
+    margin: 5px;                                            /* margem entre as cartas */
+    position: relative;                                     /* para que as cartas possam ter um efeito de 3d */
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);            /* sombra do card */
+    cursor: pointer;                                        /* cursor do mouse */
+    transform: scale(1);                                    /* transforma o elemento em 1 */
+    transform-style: preserve-3d;                           /* permite que as cartas sejam rotacionadas */
+                                                            /* adiciona perspectiva 3d, para que o elemento nao fique achatada no plano */
+    transition: transform .9s;                              /* transição de transformação, adiciona efeito de movimento ao flip do card */
+}
+
+.card:active {                                              /* quando o card é clicado */
+    transform: scale(0.97);                                 /* ao clicar no card, ele fica mais pequeno */
+    transition: transform .2s;                              /* efeito de movimento */
+}
+
+.card-front,
+.card-back {                                                /* divs que contém as imagens dos dois lados do card */
+    width: 100%;                                            /* largura total do card */
+    height: 100%;                                           /* altura total do card */
+    padding: 20px;                                          /* espaçamento interno do card */
+    position: absolute;                                     /* para que as cartas possam ter um efeito de 3d */
+    border-radius: 5px;                                     /* borda do card */
+    background: rgb(92, 187, 182);                        /* cor de fundo do card */
+    backface-visibility: hidden;                            /* oculta o lado de trás do card */
+                                                            /* todo elemento tem uma frente e um verso (ao contrario, como um espelho.) essa propriedade retira o verso */
+}
+
+.card-front {                                               /* frente do card */
+    transform: rotateY(180deg);                             /* rotaciona o elemento 180 graus no eixo y */
+                                                            /* antes, o verso aparecia transparente, pois ambas as imagens tem position absolute, ao girar no eixo Y, elas ficaram com os versos virados */
+}
+
+                                                            /* flip card animation */
+
+.card.flip {                                                /* quando o card é girado */
+    transform: rotateY(180deg);                             /* rotaciona o elemento 180 graus no eixo y */
+}
